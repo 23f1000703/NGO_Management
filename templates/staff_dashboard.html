@@ -1,0 +1,69 @@
+{% extends "base_staff.html" %}
+
+{% block content %}
+
+<h3 class="text-muted">
+        Welcome,
+    </h3>
+
+    <h1 class="fw-bold text-success">
+        <strong>{{ staff.name|upper }}</strong>
+    </h1>
+
+<div class="row">
+
+
+<div class="col-md-3">
+    <div class="card bg-success text-white">
+        <div class="card-body">
+            <h3>{{ total_beneficiaries }}</h3>
+            <p>Total Beneficiaries</p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="card bg-primary text-white">
+        <div class="card-body">
+            <h3>{{ active_beneficiaries }}</h3>
+            <p>Active Beneficiaries</p>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="row mt-4">
+
+<div class="col-md-3">
+    <a href="{{ url_for('staff_attendance') }}"
+       class="btn btn-success w-100">
+        Mark Attendance
+    </a>
+</div>
+
+<div class="col-md-3">
+    <a href="{{ url_for('add_beneficiary') }}"
+       class="btn btn-primary w-100">
+        New Admission
+    </a>
+</div>
+
+<div class="col-md-3">
+    <a href="{{ url_for('staff_beneficiary')}}"
+       class="btn btn-warning w-100">
+        View Beneficiaries
+    </a>
+</div>
+
+<div class="col-md-3">
+    <a href="{{ url_for('logout') }}"
+       class="btn btn-danger w-100">
+        Logout
+    </a>
+</div>
+
+
+</div>
+
+{% endblock %}

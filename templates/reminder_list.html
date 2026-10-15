@@ -1,0 +1,66 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <h2 class="mb-4">
+        Reminder Center
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+            <div class="alert alert-success shadow">
+                <h5>🆕 New Admissions Today</h5>
+                <h3>{{ new_admissions }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="alert alert-warning shadow">
+                <h5>🏖️ Staff Present Today</h5>
+                <h3>{{ total_attendance }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="alert alert-danger shadow">
+                <h5>❌ Staff Absent Today</h5>
+                <h3>{{ absent_staff }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="alert alert-primary shadow">
+                <h5>💰 Monthly Fee Pending</h5>
+                <h3>{{ fee_pending }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="alert alert-info shadow">
+                <h5>🎓 Program Completion Due</h5>
+                <h3>{{ completion_due }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="alert alert-success shadow">
+                <h5>🎁 Donations Received This Month</h5>
+                <h3>{{ donations_month }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="alert alert-secondary shadow">
+                <h5>💵 Pending Payments</h5>
+                <h3>{{ pending_payments }}</h3>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

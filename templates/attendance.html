@@ -1,0 +1,225 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<h2 class="mb-4">
+    Attendance Dashboard
+</h2>
+
+<div class="row mb-4">
+
+<div class="col-md-3">
+    <div class="card bg-primary text-white shadow">
+        <div class="card-body text-center">
+            <h2>{{ total_staff }}</h2>
+            <h5>Total Staff</h5>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="card bg-success text-white shadow">
+        <div class="card-body text-center">
+            <h2>{{ present_today }}</h2>
+            <h5>Present Today</h5>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="card bg-danger text-white shadow">
+        <div class="card-body text-center">
+            <h2>{{ absent_today }}</h2>
+            <h5>Absent Today</h5>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="card bg-warning text-dark shadow">
+        <div class="card-body text-center">
+            <h2>{{ leave_today }}</h2>
+            <h5>Leave Today</h5>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="card shadow mb-4">
+
+<div class="card-header bg-success text-white">
+    Today's Attendance
+</div>
+
+<div class="card-body">
+
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-light">
+
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for att in today_attendance %}
+
+            <tr>
+
+                <td>{{ att.staff.name }}</td>
+
+                <td>{{ att.staff.role }}</td>
+
+                <td>
+
+                    {% if att.status == "Present" %}
+                        <span class="badge bg-success">
+                            Present
+                        </span>
+                    {% elif att.status == "Leave" %}
+                        <span class="badge bg-warning">
+                            Leave
+                        </span>
+                    {% else %}
+                        <span class="badge bg-danger">
+                            Absent
+                        </span>
+                    {% endif %}
+
+                </td>
+
+                <td>{{ att.check_in }}</td>
+
+                <td>{{ att.check_out }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</div>
+
+<div class="card shadow mb-4">
+<div class="card-header bg-danger text-white">
+    Staff Without Attendance Today
+</div>
+
+<div class="card-body">
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Department</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for staff in missing_staff %}
+
+            <tr>
+
+                <td>{{ staff.name }}</td>
+
+                <td>{{ staff.role }}</td>
+
+                <td>{{ staff.department }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+    Monthly Attendance Summary
+</div>
+
+<div class="card-body">
+
+    <table class="table table-bordered table-hover">
+
+        <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Present</th>
+                <th>Leave</th>
+                <th>Absent</th>
+                <th>Attendance %</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for row in staff_report %}
+
+            <tr>
+
+                <td>{{ row.name }}</td>
+
+                <td>{{ row.role }}</td>
+
+                <td class="text-success">
+                    {{ row.present }}
+                </td>
+
+                <td class="text-warning">
+                    {{ row.leave }}
+                </td>
+
+                <td class="text-danger">
+                    {{ row.absent }}
+                </td>
+
+                <td>
+                    {{ row.attendance_percent }}%
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+</div>
+
+{% endblock %}
+

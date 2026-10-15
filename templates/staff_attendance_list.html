@@ -1,0 +1,179 @@
+{% extends "base_staff.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+
+            <h4 class="mb-0">
+                Today's Staff Attendance
+            </h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>Staff ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Department</th>
+                        <th>Phone</th>
+                        <th>Morning</th>
+                        <th>Evening</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for item in attendance_data %}
+
+                    <tr>
+
+                        <td>{{ item.staff.id }}</td>
+
+                        <td>{{ item.staff.name }}</td>
+
+                        <td>{{ item.staff.role }}</td>
+
+                        <td>{{ item.staff.department }}</td>
+
+                        <td>{{ item.staff.phone }}</td>
+
+                        <!-- Morning -->
+
+                        <td>
+
+                        {% if item.attendance %}
+
+                            {% if item.attendance.check_in %}
+
+                                {{ item.attendance.check_in.strftime('%I:%M %p') }}
+
+                            {% else %}
+
+                                --
+
+                            {% endif %}
+
+                        {% else %}
+
+                            <a href="{{ url_for('mark_attendance',
+                                                 staff_id=item.staff.id) }}"
+                               class="btn btn-success btn-sm">
+
+                                Morning
+
+                            </a>
+
+                        {% endif %}
+
+                        </td>
+
+                        <!-- Evening -->
+
+                        <td>
+
+                        {% if item.attendance %}
+
+                            {% if item.attendance.check_out %}
+
+                                {{ item.attendance.check_out.strftime('%I:%M %p') }}
+
+                            {% elif item.attendance.status == "Absent" %}
+
+                                --
+
+                            {% else %}
+
+                                <a href="{{ url_for('mark_attendance',
+                                                     staff_id=item.staff.id) }}"
+                                   class="btn btn-warning btn-sm">
+
+                                    Evening
+
+                                </a>
+
+                            {% endif %}
+
+                        {% else %}
+
+                            --
+
+                        {% endif %}
+
+                        </td>
+
+                        <!-- Status -->
+
+                        <td>
+
+                        {% if item.attendance %}
+
+                            {% if item.attendance.status == "Absent" %}
+
+                                <span class="badge bg-danger">
+                                    Absent
+                                </span>
+
+                            {% elif item.attendance.check_in and item.attendance.check_out %}
+
+                                <span class="badge bg-success">
+                                    Completed
+                                </span>
+
+                            {% elif item.attendance.check_in %}
+
+                                <span class="badge bg-primary">
+                                    Present
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-secondary">
+                                    Pending
+                                </span>
+
+                            {% endif %}
+
+                        {% else %}
+
+                            <span class="badge bg-secondary">
+                                Pending
+                            </span>
+
+                        {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            <a href="{{ url_for('close_attendance') }}"
+               class="btn btn-danger">
+
+                Close Today's Attendance
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

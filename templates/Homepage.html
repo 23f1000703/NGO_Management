@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ngo Mangement</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .hero{
+            background:linear-gradient(rgba(15,61,39,.85),
+            rgba(15,61,39,.85)),
+            url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c');
+            background-size:cover;
+            background-position:center;
+            height:90vh;
+
+            display:flex;
+            align-items:center;
+
+            color:white;
+        }
+
+        .stats{
+            background:#2e9e6b;
+            color:white;
+        }
+
+        .program-card{
+            transition:.3s;
+        }
+        .logo{
+            width:45px;
+            height:45px;
+            object-fit:cover;
+            border-radius:50%;
+            margin-right:10px;
+        }
+
+        .program-card:hover{
+            transform:translateY(-5px);
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center fw-bold"
+   href="{{ url_for('home') }}">
+
+    <img src="{{ url_for('static', filename='logo.jpg') }}"
+         class="logo"
+         alt="Logo">
+
+    <div>
+
+        <div>Ngo Management</div>
+
+    </div>
+
+</a>
+
+        <div class="ms-auto">
+            <a href="/login" class="btn btn-light">
+                Login
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container text-center">
+
+        <h1 class="display-3 fw-bold">
+            Empowering Lives Through Education
+        </h1>
+
+        <p class="lead mt-3">
+            Building a better future for children,
+            women and communities.
+        </p>
+
+        <a href="{{ url_for('login') }}"
+           class="btn btn-success btn-lg mt-3">
+            Get Started
+        </a>
+
+    </div>
+</section>
+
+<section class="stats py-5">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="col-md-3">
+                <h2>1500+</h2>
+                <p>Beneficiaries</p>
+            </div>
+
+            <div class="col-md-3">
+                <h2>50+</h2>
+                <p>Staff</p>
+            </div>
+
+            <div class="col-md-3">
+                <h2>500+</h2>
+                <p>Donors</p>
+            </div>
+
+            <div class="col-md-3">
+                <h2>20+</h2>
+                <p>Districts</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+
+    <h2 class="text-center mb-5">
+        Our Programs
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card program-card">
+                <div class="card-body text-center">
+                    <h3>📚</h3>
+                    <h5>Education</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card program-card">
+                <div class="card-body text-center">
+                    <h3>🏥</h3>
+                    <h5>Health</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card program-card">
+                <div class="card-body text-center">
+                    <h3>👩</h3>
+                    <h5>Women Empowerment</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card program-card">
+                <div class="card-body text-center">
+                    <h3>🍲</h3>
+                    <h5>Nutrition</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="bg-dark text-white text-center p-4">
+    © 2026 Ngo Management
+</footer>
+
+</body>
+</html>

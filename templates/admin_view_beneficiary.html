@@ -1,0 +1,204 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3 class="mb-0">
+                Beneficiary Details
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+                    <strong>Beneficiary ID</strong><br>
+                    {{ beneficiary.beneficiary_id }}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Name</strong><br>
+                    {{ beneficiary.name }}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Date of Birth</strong><br>
+                    {{ beneficiary.dob }}
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+                    <strong>Beneficiary Category</strong><br>
+                    {{ beneficiary.beneficiary_category }}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Gender</strong><br>
+                    {{ beneficiary.gender }}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Category</strong><br>
+                    {{ beneficiary.category }}
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+                    <strong>Caste</strong><br>
+                    {{ beneficiary.caste }}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Blood Group</strong><br>
+                    {{ beneficiary.blood_group }}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Phone</strong><br>
+                    {{ beneficiary.phone }}
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <strong>Email</strong><br>
+                    {{ beneficiary.email or "-" }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Address</strong><br>
+                    {{ beneficiary.address }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h5 class="text-success">
+                Identity Details
+            </h5>
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+                    <strong>Proof ID</strong><br>
+                    {{ beneficiary.proof_id }}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>ID Number</strong><br>
+                    {{ beneficiary.id_no }}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Pincode</strong><br>
+                    {{ beneficiary.pincode }}
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <strong>Village</strong><br>
+                    {{ beneficiary.village }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Status</strong><br>
+
+                    {% if beneficiary.status=="Active" %}
+                        <span class="badge bg-success">
+                            Active
+                        </span>
+                    {% else %}
+                        <span class="badge bg-danger">
+                            Inactive
+                        </span>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h5 class="text-success">
+                Guardian Details
+            </h5>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <strong>Guardian Name</strong><br>
+                    {{ beneficiary.guardian_name }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Relation</strong><br>
+                    {{ beneficiary.guardian_relation }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h5 class="text-success">
+                Admission Details
+            </h5>
+
+            <div class="row">
+
+                <div class="col-md-3 mb-3">
+                    <strong>Admission Date</strong><br>
+                    {{ beneficiary.admission_date }}
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <strong>Completion Date</strong><br>
+                    {{ beneficiary.completion_date or "-" }}
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <strong>Monthly Fee</strong><br>
+                    ₹ {{ beneficiary.monthly_fee }}
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <strong>Remarks</strong><br>
+                    {{ beneficiary.remarks or "-" }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            <button onclick="history.back()"
+               class="btn btn-secondary">
+
+                Back
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

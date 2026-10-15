@@ -1,0 +1,198 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-primary text-white">
+    <h3 class="mb-0">
+        Staff Profile
+    </h3>
+</div>
+
+<div class="card-body">
+
+ <div class="row">
+
+   <div class="col-md-6">
+
+    <h5 class="text-success">Personal Information</h5>
+
+    <table class="table table-bordered">
+
+    <tr>
+       <th>Name</th>
+       <td>{{ staff.name }}</td>
+    </tr>
+
+    <tr>
+        <th>Role</th>
+        <td>{{ staff.role }}</td>
+    </tr>
+
+    <tr>
+        <th>Department</th>
+        <td>{{ staff.department }}</td>
+    </tr>
+
+    <tr>
+        <th>Phone</th>
+        <td>{{ staff.phone }}</td>
+    </tr>
+
+    <tr>
+        <th>Date of Birth</th>
+        <td>{{ staff.dob }}</td>
+    </tr>
+
+    <tr>
+        <th>Gender</th>
+        <td>{{ staff.gender }}</td>
+    </tr>
+
+    <tr>
+        <th>Nationality</th>
+        <td>{{ staff.nationality }}</td>
+    </tr>
+
+    <tr>
+        <th>State</th>
+        <td>{{ staff.state }}</td>
+    </tr>
+
+    <tr>
+        <th>Address</th>
+        <td>{{ staff.address }}</td>
+    </tr>
+
+    <tr>
+        <th>Status</th>
+        <td>
+
+        {% if staff.status == 'Active' %}
+            <span class="badge bg-success">
+                Active
+            </span>
+        {% else %}
+            <span class="badge bg-danger">
+                Inactive
+            </span>
+        {% endif %}
+
+    </td>
+
+    </tr>
+
+ </table>
+
+</div>
+
+<div class="col-md-6">
+
+<h5 class="text-primary">
+    Login Information
+</h5>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Username</th>
+    <td>{{ staff.user.username }}</td>
+</tr>
+
+<tr>
+    <th>Email</th>
+    <td>{{ staff.user.email }}</td>
+</tr>
+
+<tr>
+    <th>Password</th>
+    <td>{{ staff.user.password }}</td>
+</tr>
+
+<tr>
+    <th>Email Verified</th>
+    <td>{{ staff.user.email_verified }}</td>
+</tr>
+
+</table>
+
+<h5 class="text-warning mt-4">
+    Employment Details
+</h5>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Salary</th>
+    <td>₹ {{ staff.salary }}</td>
+</tr>
+
+<tr>
+    <th>Joining Date</th>
+    <td>{{ staff.joining_date }}</td>
+</tr>
+
+<tr>
+    <th>Completion Date</th>
+    <td>{{ staff.completion_date }}</td>
+</tr>
+
+<tr>
+    <th>Attendance Count</th>
+    <td>{{ attendance_count }}</td>
+</tr>
+
+<tr>
+    <th>Total Payment Received</th>
+    <td>
+        ₹ {{ total_payment }}
+    </td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<hr>
+
+<h5 class="text-danger">
+    Identity Details
+</h5>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Proof Type</th>
+    <td>{{ staff.proof_id }}</td>
+</tr>
+
+<tr>
+    <th>ID Number</th>
+    <td>{{ staff.id_num }}</td>
+</tr>
+
+</table>
+
+<a href="{{ url_for('staff_list') }}"
+class="btn btn-secondary">
+Back
+</a>
+
+<a href="{{ url_for('edit_staff',
+                 staff_id=staff.id) }}"
+class="btn btn-warning">
+Edit Staff
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

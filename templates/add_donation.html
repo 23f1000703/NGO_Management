@@ -1,0 +1,215 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-success text-white">
+    <h3 class="mb-0">
+        Add Donation
+    </h3>
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Donor Name</label>
+
+<input type="text"
+       name="donor_name"
+       class="form-control"
+       required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Phone</label>
+
+<input type="text"
+       name="donor_phone"
+       class="form-control">
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Email</label>
+
+<input type="email"
+       name="donor_email"
+       class="form-control">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Date of Birth</label>
+
+<input type="date"
+       name="dob"
+       class="form-control">
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Proof Type</label>
+
+<select name="proof_id"
+        class="form-select">
+
+<option value="Aadhaar">Aadhaar</option>
+
+<option value="PAN">PAN</option>
+
+<option value="Voter ID">Voter ID</option>
+
+<option value="Driving Licence">Driving Licence</option>
+
+<option value="Passport">Passport</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6 mb-3">
+<label>ID Number</label>
+
+<input type="text"
+       name="id_no"
+       class="form-control">
+</div>
+
+</div>
+
+<div class="mb-3">
+
+<label>Address</label>
+
+<textarea name="address"
+          class="form-control"
+          rows="2"></textarea>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<label>Donation Amount</label>
+
+<input type="number"
+       name="amount"
+       class="form-control"
+       required>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Donation Type</label>
+
+<select name="donation_type"
+        class="form-select">
+
+<option>Cash</option>
+
+<option>UPI</option>
+
+<option>Cheque</option>
+
+<option>Bank Transfer</option>
+
+<option>Material Donation</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<label>Donation Date</label>
+
+<input type="date"
+       name="donation_date"
+       class="form-control"
+       required>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Purpose</label>
+
+<select name="purpose"
+        class="form-select">
+
+<option>Education</option>
+
+<option>Healthcare</option>
+
+<option>Nutrition</option>
+
+<option>Women Empowerment</option>
+
+<option>Skill Development</option>
+
+<option>General Donation</option>
+
+<option>Others</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="mb-3">
+
+<label>Remarks</label>
+
+<textarea name="remarks"
+          rows="3"
+          class="form-control"></textarea>
+
+</div>
+
+<hr>
+
+<div class="text-end">
+
+<button class="btn btn-success">
+
+Save Donation
+
+</button>
+
+<a href="{{ url_for('donation_list') }}"
+   class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

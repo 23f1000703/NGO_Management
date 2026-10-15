@@ -1,0 +1,265 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow border-0">
+
+    <div class="card-header bg-warning text-dark">
+        <h3 class="mb-0">
+            Edit Staff
+        </h3>
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Staff Name
+                    </label>
+
+                    <input type="text"
+                           name="name"
+                           class="form-control"
+                           value="{{ staff.name }}"
+                           required>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Role
+                    </label>
+
+                    <select name="role"
+                            class="form-select">
+
+                        <option value="Administrator"
+                        {% if staff.role == 'Administrator' %}selected{% endif %}>
+                            Administrator
+                        </option>
+
+                        <option value="Manager"
+                        {% if staff.role == 'Manager' %}selected{% endif %}>
+                            Manager
+                        </option>
+
+                        <option value="Coordinator"
+                        {% if staff.role == 'Coordinator' %}selected{% endif %}>
+                            Coordinator
+                        </option>
+
+                        <option value="Teacher"
+                        {% if staff.role == 'Teacher' %}selected{% endif %}>
+                            Teacher
+                        </option>
+
+                        <option value="Volunteer"
+                        {% if staff.role == 'Volunteer' %}selected{% endif %}>
+                            Volunteer
+                        </option>
+
+                        <option value="Accountant"
+                        {% if staff.role == 'Accountant' %}selected{% endif %}>
+                            Accountant
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Department
+                    </label>
+
+                    <input type="text"
+                           name="department"
+                           class="form-control"
+                           value="{{ staff.department }}">
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Phone
+                    </label>
+
+                    <input type="text"
+                           name="phone"
+                           class="form-control"
+                           value="{{ staff.phone }}">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Proof Type
+                    </label>
+
+                    <select name="proof_id"
+                            class="form-select">
+
+                        <option value="Aadhaar"
+                        {% if staff.proof_id == 'Aadhaar' %}selected{% endif %}>
+                            Aadhaar
+                        </option>
+
+                        <option value="PAN"
+                        {% if staff.proof_id == 'PAN' %}selected{% endif %}>
+                            PAN
+                        </option>
+
+                        <option value="Voter ID"
+                        {% if staff.proof_id == 'Voter ID' %}selected{% endif %}>
+                            Voter ID
+                        </option>
+
+                        <option value="Driving Licence"
+                        {% if staff.proof_id == 'Driving Licence' %}selected{% endif %}>
+                            Driving Licence
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        ID Number
+                    </label>
+
+                    <input type="text"
+                           name="id_num"
+                           class="form-control"
+                           value="{{ staff.id_num }}">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Salary
+                    </label>
+
+                    <input type="number"
+                           name="salary"
+                           class="form-control"
+                           value="{{ staff.salary }}">
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Status
+                    </label>
+
+                    <select name="status"
+                            class="form-select">
+
+                        <option value="Active"
+                        {% if staff.status == 'Active' %}selected{% endif %}>
+                            Active
+                        </option>
+
+                        <option value="Inactive"
+                        {% if staff.status == 'Inactive' %}selected{% endif %}>
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Joining Date
+                    </label>
+
+                    <input type="date"
+                           name="joining_date"
+                           class="form-control"
+                           value="{{ staff.joining_date }}">
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Completion Date
+                    </label>
+
+                    <input type="date"
+                           name="completion_date"
+                           class="form-control"
+                           value="{{ staff.completion_date }}">
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">
+                        Update Password
+                    </label>
+
+                    <input type="password"
+                        name="update_password"
+                        class="form-control"
+                        placeholder="Enter new password (leave blank to keep current password)">
+                </div>
+
+            </div>
+
+            <hr>
+
+            <button type="submit"
+                    class="btn btn-success">
+
+                Update Staff
+
+            </button>
+
+            <a href="{{ url_for('staff_list') }}"
+               class="btn btn-secondary">
+
+                Cancel
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+</div>
+
+{% endblock %}

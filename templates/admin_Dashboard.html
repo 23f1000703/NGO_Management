@@ -1,0 +1,189 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row mb-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h6 class="text-muted">
+                        Total Beneficiaries
+                    </h6>
+
+                    <h2>
+                        {{ total_beneficiary }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h6 class="text-muted">
+                        Active Beneficiaries
+                    </h6>
+
+                    <h2 class="text-success">
+                        {{ active_beneficiary }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h6 class="text-muted">
+                        Total Staff
+                    </h6>
+
+                    <h2>
+                        {{ total_staff }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h6 class="text-muted">
+                        Total Donations
+                    </h6>
+
+                    <h2 class="text-primary">
+                        ₹{{ total_donation }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <div class="card shadow-sm border-0 mb-4">
+
+                <div class="card-header bg-white">
+                    <h5>
+                        Recent Admissions
+                    </h5>
+                </div>
+
+                <div class="card-body p-0">
+
+                    <table class="table table-hover mb-0">
+
+                        <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>District</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for b in recent_beneficiaries %}
+
+                            <tr>
+
+                                <td>
+                                    {{ b.beneficiary_id }}
+                                </td>
+
+                                <td>
+                                    {{ b.name }}
+                                </td>
+
+                                <td>
+                                    {{ b.category }}
+                                </td>
+
+                                <td>
+                                    {{ b.district }}
+                                </td>
+
+                                <td>
+
+                                    {% if b.status == 'Active' %}
+                                        <span class="badge bg-success">
+                                            Active
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-danger">
+                                            Inactive
+                                        </span>
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-white">
+                    <h5>
+                        Quick Actions
+                    </h5>
+                </div>
+
+                <div class="card-body">
+
+                    <a href="{{ url_for('add_staff') }}"
+                       class="btn btn-success w-100 mb-2">
+                        Add Staff
+                    </a>
+
+                    <a href="{{ url_for('staff_list') }}"
+                       class="btn btn-primary w-100 mb-2">
+                        Staff Management
+                    </a>
+
+                    <a href="{{ url_for('donation_list') }}"
+                       class="btn btn-warning w-100 mb-2">
+                        Donations
+                    </a>
+
+                    <a href="{{ url_for('attendance') }}"
+                       class="btn btn-dark w-100">
+                        Attendance
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

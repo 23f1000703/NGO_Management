@@ -1,0 +1,347 @@
+{% extends "base_staff.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning text-dark">
+            <h3 class="mb-0">
+                Edit Beneficiary
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label>Beneficiary ID</label>
+                        <input type="text"
+                               class="form-control"
+                               value="{{ beneficiary.beneficiary_id }}"
+                               readonly>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Name</label>
+                        <input type="text"
+                               name="name"
+                               class="form-control"
+                               value="{{ beneficiary.name }}"
+                               required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Date of Birth</label>
+                        <input type="date"
+                               name="dob"
+                               class="form-control"
+                               value="{{ beneficiary.dob }}"
+                               required>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Beneficiary Category</label>
+
+                        <select name="beneficiary_category"
+                                class="form-select">
+
+                            {% set categories = [
+                            'Student',
+                            'Children',
+                            'Farmer',
+                            'Livelihood & Skill Development',
+                            'Healthcare',
+                            'Person with Disability',
+                            'Women',
+                            'Youth',
+                            'Vulnerable Community'
+                            ] %}
+
+                            {% for item in categories %}
+
+                            <option value="{{ item }}"
+                            {% if beneficiary.beneficiary_category==item %}selected{% endif %}>
+                                {{ item }}
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Gender</label>
+
+                        <select name="gender"
+                                class="form-select">
+
+                            <option value="Male"
+                            {% if beneficiary.gender=="Male" %}selected{% endif %}>
+                                Male
+                            </option>
+
+                            <option value="Female"
+                            {% if beneficiary.gender=="Female" %}selected{% endif %}>
+                                Female
+                            </option>
+
+                            <option value="Other"
+                            {% if beneficiary.gender=="Other" %}selected{% endif %}>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Category</label>
+
+                        <select name="category"
+                                class="form-select">
+
+                            <option value="General"
+                            {% if beneficiary.category=="General" %}selected{% endif %}>
+                                General
+                            </option>
+
+                            <option value="OBC"
+                            {% if beneficiary.category=="OBC" %}selected{% endif %}>
+                                OBC
+                            </option>
+
+                            <option value="SC"
+                            {% if beneficiary.category=="SC" %}selected{% endif %}>
+                                SC
+                            </option>
+
+                            <option value="ST"
+                            {% if beneficiary.category=="ST" %}selected{% endif %}>
+                                ST
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label>Caste</label>
+                        <input type="text"
+                               name="caste"
+                               class="form-control"
+                               value="{{ beneficiary.caste }}">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Email</label>
+                        <input type="email"
+                               name="email"
+                               class="form-control"
+                               value="{{ beneficiary.email }}">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Phone</label>
+                        <input type="text"
+                               name="phone"
+                               class="form-control"
+                               value="{{ beneficiary.phone }}">
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Proof ID</label>
+
+                        <select name="proof_id"
+                                class="form-select">
+
+                            <option value="Aadhaar"
+                            {% if beneficiary.proof_id=="Aadhaar" %}selected{% endif %}>
+                                Aadhaar
+                            </option>
+
+                            <option value="PAN"
+                            {% if beneficiary.proof_id=="PAN" %}selected{% endif %}>
+                                PAN
+                            </option>
+
+                            <option value="Voter ID"
+                            {% if beneficiary.proof_id=="Voter ID" %}selected{% endif %}>
+                                Voter ID
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>ID Number</label>
+
+                        <input type="text"
+                               name="id_no"
+                               class="form-control"
+                               value="{{ beneficiary.id_no }}">
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Blood Group</label>
+
+                        <input type="text"
+                               name="blood_group"
+                               class="form-control"
+                               value="{{ beneficiary.blood_group }}">
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Pincode</label>
+
+                        <input type="text"
+                               name="pincode"
+                               class="form-control"
+                               value="{{ beneficiary.pincode }}">
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Village</label>
+
+                        <input type="text"
+                               name="village"
+                               class="form-control"
+                               value="{{ beneficiary.village }}">
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Monthly Fee</label>
+
+                        <input type="number"
+                               name="monthly_fee"
+                               class="form-control"
+                               value="{{ beneficiary.monthly_fee }}">
+
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Address</label>
+
+                    <textarea name="address"
+                              rows="3"
+                              class="form-control">{{ beneficiary.address }}</textarea>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Guardian Name</label>
+
+                        <input type="text"
+                               name="guardian_name"
+                               class="form-control"
+                               value="{{ beneficiary.guardian_name }}">
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Guardian Relation</label>
+
+                        <input type="text"
+                               name="guardian_relation"
+                               class="form-control"
+                               value="{{ beneficiary.guardian_relation }}">
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Status</label>
+
+                        <select name="status"
+                                class="form-select">
+
+                            <option value="Active"
+                            {% if beneficiary.status=="Active" %}selected{% endif %}>
+                                Active
+                            </option>
+
+                            <option value="Inactive"
+                            {% if beneficiary.status=="Inactive" %}selected{% endif %}>
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-8 mb-3">
+
+                        <label>Remarks</label>
+
+                        <textarea name="remarks"
+                                  rows="2"
+                                  class="form-control">{{ beneficiary.remarks }}</textarea>
+
+                    </div>
+
+                </div>
+
+                <button class="btn btn-warning">
+                    Update Beneficiary
+                </button>
+
+                <a href="{{ url_for('staff_beneficiary') }}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
